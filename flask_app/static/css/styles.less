@@ -1,0 +1,43 @@
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+body {
+    .flexcolumn();
+
+    header {
+        .flexcolumn();
+    }
+    main {
+        .flexcolumn();
+
+        .row {
+            .flexrow();
+
+            form {
+                .flexcolumn();
+                margin: 1em;
+
+                section {
+                    .flexrow();
+                    margin: 1em;
+
+                    input {
+                        margin: .5em;
+                    }
+                }
+            }
+        }
+    }
+}

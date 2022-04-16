@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>BaseBall App</title>
+</head>
+<body>
+    <header>
+        <h1>Add Game Scores</h1>
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+        {{user.fullName()}}
+    </header>
+    <div class="messages">
+        {% with messages = get_flashed_messages() %}
+            {%if messages %}
+                {% for m in messages %}
+                    <h5>{{m}}</h5>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <main>
+        <div class="row">
+            <form action="/{{game.id}}/update/" method='post'>
+                <div class="row">
+                    <div class="column">
+                        <section>
+                            <label for="teamOne">Team 1</label>
+                            <input type="text" name="teamOne" value='{{game.teamOne}}'>
+                        </section>
+                        <section>
+                            <label for="teamTwo">Team 2</label>
+                            <input type="text" name="teamTwo" value='{{game.teamTwo}}'>
+                        </section>
+                        <section>
+                            <label for="finalScore">Final Score (0-0)</label>
+                            <input type="text" name="finalScore" value='{{game.finalScore}}'>
+                        </section>
+                    </div>
+                    <div class="column">
+                        <section>
+                            <label for="info">Game Information</label>
+                            <textarea name="info" cols="30" rows="10">{{game.info}}</textarea>
+                        </section>
+                        <section>
+                            <label for="gameDate">Game Date</label>
+                            <input type="date" name="gameDate" value={{game.gameDate}}>
+                        </section>
+                    </div>
+                </div>
+                <button>Add Game Scores</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+</html>
